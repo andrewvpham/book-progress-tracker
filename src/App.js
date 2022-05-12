@@ -29,12 +29,10 @@ import { Routes, Route, Link } from "react-router-dom";
 
 const data = [
   {
-    name: "Overview",
-    icon: <HomeOutlined />,
-  },
-  { name: "Library", icon: <LibraryBooksIcon /> },
-  { name: "View Progress", icon: <TimelineIcon /> },
-  { name: "Settings", icon: <SettingsIcon /> },
+    name: "Overview", icon: <HomeOutlined />, linksrc: "/"},
+  { name: "Library", icon: <LibraryBooksIcon />, linksrc: "library"},
+  { name: "View Progress", icon: <TimelineIcon />,  linksrc: "progress" },
+  { name: "Settings", icon: <SettingsIcon />,  linksrc: "settings" },
 
 ];
 
@@ -51,11 +49,53 @@ const theme = createTheme({
   }
 });
 
-function Home() {
+function Overview() {
   return (
     <>
       <main>
-        <h2>Welcome to the homepage!</h2>
+        <h2>Welcome to the Overview Page</h2>
+        <p>You can do this, I believe in you.</p>
+      </main>
+      <nav>
+        <Link to="/about">About</Link>
+      </nav>
+    </>
+  );
+}
+
+function Library() {
+  return (
+    <>
+      <main>
+        <h2>Welcome to the Library Page</h2>
+        <p>You can do this, I believe in you.</p>
+      </main>
+      <nav>
+        <Link to="/about">About</Link>
+      </nav>
+    </>
+  );
+}
+
+function Progress() {
+  return (
+    <>
+      <main>
+        <h2>Welcome to the Progress Page</h2>
+        <p>You can do this, I believe in you.</p>
+      </main>
+      <nav>
+        <Link to="/about">About</Link>
+      </nav>
+    </>
+  );
+}
+
+function Settings() {
+  return (
+    <>
+      <main>
+        <h2>Welcome to the Settings Page</h2>
         <p>You can do this, I believe in you.</p>
       </main>
       <nav>
@@ -70,11 +110,11 @@ function App() {
   const [open, setOpen] = useState(false);
 
   
-
+// How to link listitem button seen below
   const getList = () => (
     <div style={{ width: 250}} onClick={() => setOpen(false)} >
       {data.map((item, index) => (
-        <ListItem button key={index} >
+        <ListItem button key={index} component={Link} to={item.linksrc}>
           <ListItemIcon style={{ color: 'white' }}>{item.icon}</ListItemIcon>
           <ListItemText primary={item.name} />
         </ListItem>
@@ -97,10 +137,16 @@ function App() {
           Book Progress Tracker
         </Typography>
       </Toolbar>
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
+      
     </AppBar>
+  
+  {/* Routes defined here, link to these: */}
+    <Routes>
+        <Route path="/" element={<Overview />} />
+        <Route path="library" element={<Library />} />
+        <Route path="progress" element={<Progress />} />
+        <Route path="settings" element={<Settings />} />
+      </Routes>
     </div>
   );
 }
