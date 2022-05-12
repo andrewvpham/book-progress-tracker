@@ -2,6 +2,14 @@ import logo from './logo.svg';
 import './App.css';
 import * as React from 'react';
 import ReactDOM from 'react-dom';
+import { createTheme } from '@mui/material/styles';
+import { Routes, Route, Link } from "react-router-dom";
+import Progress from './Progress';
+import Overview from './Overview';
+import Library from './Library';
+import Settings from './Settings';
+
+//MUI imports
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -14,7 +22,6 @@ import ListItemText from '@mui/material/ListItemText';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import TimelineIcon from '@mui/icons-material/Timeline';
 import SettingsIcon from '@mui/icons-material/Settings';
-import { useState } from "react";
 import {
   CheckBoxOutlineBlankOutlined,
   DraftsOutlined,
@@ -23,10 +30,16 @@ import {
   MailOutline,
   ReceiptOutlined,
 } from "@mui/icons-material";
-import { createTheme } from '@mui/material/styles';
-import { Routes, Route, Link } from "react-router-dom";
-
-
+//useState import
+import { useState } from "react";
+//Chart component import
+import Paper from '@mui/material/Paper';
+import {
+  ArgumentAxis,
+  ValueAxis,
+  Chart,
+  LineSeries,
+} from '@devexpress/dx-react-chart-material-ui';
 
 const data = [
   {
@@ -50,41 +63,7 @@ const theme = createTheme({
   }
 });
 
-function Overview() {
-  return (
-      <main style={{ color: "white"}}>
-        <h2 >Welcome to the Overview Page</h2>
-        <p>You can do this, I believe in you.</p>
-      </main>
-  );
-}
 
-function Library() {
-  return (
-      <main style={{ color: "white"}}>
-        <h2>Welcome to the Library Page</h2>
-        <p>You can do this, I believe in you.</p>
-      </main>
-  );
-}
-
-function Progress() {
-  return (
-      <main style={{ color: "white"}}>
-        <h2>Welcome to the Progress Page</h2>
-        <p>You can do this, I believe in you.</p>
-      </main>
-  );
-}
-
-function Settings() {
-  return (
-      <main style={{ color: "white"}}>
-        <h2>Welcome to the Settings Page</h2>
-        <p>You can do this, I believe in you.</p>
-      </main>
-  );
-}
 
 
 function App() {
@@ -104,6 +83,7 @@ function App() {
   );
 
   return (
+    //Navigation bar and drawer
     <div className="App" >
       <Drawer open={open} anchor={"left"} onClose={() => setOpen(false)}>
         {getList()} 
