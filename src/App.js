@@ -20,6 +20,7 @@ import {
   MailOutline,
   ReceiptOutlined,
 } from "@mui/icons-material";
+import { makeStyles } from '@mui/material/styles'
 
 
 const data = [
@@ -39,11 +40,7 @@ const data = [
 function App() {
   const [open, setOpen] = useState(false);
 
-  const styles = {
-    paper: {
-      background: "blue"
-    }
-  }
+
 
   const getList = () => (
     <div style={{ width: 250 }} onClick={() => setOpen(false)}>
