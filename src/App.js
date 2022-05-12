@@ -14,7 +14,6 @@ import ListItemText from '@mui/material/ListItemText';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import TimelineIcon from '@mui/icons-material/Timeline';
 import SettingsIcon from '@mui/icons-material/Settings';
-
 import { useState } from "react";
 import {
   CheckBoxOutlineBlankOutlined,
@@ -24,11 +23,8 @@ import {
   MailOutline,
   ReceiptOutlined,
 } from "@mui/icons-material";
-
 import { createTheme } from '@mui/material/styles';
-
-
-
+import { Routes, Route, Link } from "react-router-dom";
 
 
 const data = [
@@ -54,6 +50,21 @@ const theme = createTheme({
     }
   }
 });
+
+function Home() {
+  return (
+    <>
+      <main>
+        <h2>Welcome to the homepage!</h2>
+        <p>You can do this, I believe in you.</p>
+      </main>
+      <nav>
+        <Link to="/about">About</Link>
+      </nav>
+    </>
+  );
+}
+
 
 function App() {
   const [open, setOpen] = useState(false);
@@ -81,10 +92,14 @@ function App() {
         <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }} onClick={() => setOpen(true)}>
           <MenuIcon />
         </IconButton>
+        
         <Typography variant="h6" color="inherit" component="div">
           Book Progress Tracker
         </Typography>
       </Toolbar>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
     </AppBar>
     </div>
   );

@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import { BrowserRouter } from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
 import {
   StyledEngineProvider,
@@ -29,10 +30,11 @@ const theme = createTheme({
 root.render(
   //Wrap component with theme you created using themeprovider
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-    <App />
-    </ThemeProvider>
-    
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+          <App />
+      </ThemeProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
