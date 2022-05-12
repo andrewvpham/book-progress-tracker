@@ -21,6 +21,7 @@ import {
   ReceiptOutlined,
 } from "@mui/icons-material";
 
+import { createTheme } from '@mui/material/styles';
 
 
 
@@ -37,15 +38,28 @@ const data = [
 
 ];
 
+const theme = createTheme({
+  components: {
+    MuiDrawer: {
+      styleOverrides: {
+        paper: {
+          backgroundColor: "#202124",
+          color: "white",
+        }
+      }
+    }
+  }
+});
+
 function App() {
   const [open, setOpen] = useState(false);
 
   
 
   const getList = () => (
-    <div style={{ width: 250}} onClick={() => setOpen(false)}>
+    <div style={{ width: 250}} onClick={() => setOpen(false)} >
       {data.map((item, index) => (
-        <ListItem button key={index}>
+        <ListItem button key={index} >
           <ListItemIcon>{item.icon}</ListItemIcon>
           <ListItemText primary={item.name} />
         </ListItem>
@@ -56,7 +70,7 @@ function App() {
   return (
     <div className="App" >
       <Drawer open={open} anchor={"left"} onClose={() => setOpen(false)}>
-        {getList()}
+        {getList()} 
       </Drawer>
       <AppBar position="relative">
       <Toolbar variant="dense">

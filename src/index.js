@@ -3,12 +3,36 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import {
+  StyledEngineProvider,
+  ThemeProvider,
+  createTheme
+} from "@mui/material/styles";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+//Create theme type like this
+const theme = createTheme({
+  components: {
+    MuiDrawer: {
+      styleOverrides: {
+        paper: {
+          background: "#202124",
+          color: "white"
+        },
+
+      }
+    }
+  }
+});
+
 root.render(
+  //Wrap component with theme you created using themeprovider
   <React.StrictMode>
+    <ThemeProvider theme={theme}>
     <App />
+    </ThemeProvider>
+    
   </React.StrictMode>
 );
 
