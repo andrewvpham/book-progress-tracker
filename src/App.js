@@ -32,14 +32,7 @@ import {
 } from "@mui/icons-material";
 //useState import
 import { useState } from "react";
-//Chart component import
-import Paper from '@mui/material/Paper';
-import {
-  ArgumentAxis,
-  ValueAxis,
-  Chart,
-  LineSeries,
-} from '@devexpress/dx-react-chart-material-ui';
+
 
 const data = [
   {

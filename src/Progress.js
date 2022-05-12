@@ -1,17 +1,11 @@
-import ReactDOM from 'react-dom';
-import Paper from '@mui/material/Paper';
-import {
-  ArgumentAxis,
-  ValueAxis,
-  Chart,
-  LineSeries,
-} from '@devexpress/dx-react-chart-material-ui';
+import React, { PureComponent } from 'react';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-const data = [
-    { argument: 1, value: 10 },
-    { argument: 2, value: 20 },
-    { argument: 3, value: 30 },
-  ];
+
+const data = [{name: 'Page A', uv: 200, pv: 2400, amt: 2400},
+              {name: 'Page B', uv: 400, pv: 2400, amt: 2400},
+              {name: 'Page C', uv: 500, pv: 2400, amt: 2400},
+            ];
 
   //this will display data visualization of your book progress which you can filter by  genre, year, etc
 function Progress() {
@@ -19,10 +13,16 @@ function Progress() {
     return (
         <main style={{ color: "white"}}>
           <h2>Welcome to the Progress Page</h2>
-          <p>You can do this, I believe in you.</p>
+            <LineChart width={600} height={300} data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
+                <Line type="monotone" dataKey="uv" stroke="#8884d8" />
+                <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+                <XAxis dataKey="name" />
+                <YAxis />
+            </LineChart>
         </main>
         
     );
   }
 
 export default Progress;
+
