@@ -20,30 +20,30 @@ import {
   MailOutline,
   ReceiptOutlined,
 } from "@mui/icons-material";
-import { makeStyles } from '@mui/material/styles'
+
+
+
+
 
 
 const data = [
   {
-    name: "Home",
+    name: "Overview",
     icon: <HomeOutlined />,
   },
-  { name: "Inbox", icon: <InboxOutlined /> },
-  { name: "Outbox", icon: <CheckBoxOutlineBlankOutlined /> },
-  { name: "Sent mail", icon: <MailOutline /> },
-  { name: "Draft", icon: <DraftsOutlined /> },
-  { name: "Trash", icon: <ReceiptOutlined /> },
+  { name: "Library", icon: <InboxOutlined /> },
+  { name: "View Progress", icon: <CheckBoxOutlineBlankOutlined /> },
+  { name: "Settings", icon: <MailOutline /> },
+
 ];
-
-
 
 function App() {
   const [open, setOpen] = useState(false);
 
-
+  
 
   const getList = () => (
-    <div style={{ width: 250 }} onClick={() => setOpen(false)}>
+    <div style={{ width: 250}} onClick={() => setOpen(false)}>
       {data.map((item, index) => (
         <ListItem button key={index}>
           <ListItemIcon>{item.icon}</ListItemIcon>
@@ -54,8 +54,8 @@ function App() {
   );
 
   return (
-    <div className="App">
-      <Drawer open={open} anchor={"left"} onClose={() => setOpen(false)} >
+    <div className="App" >
+      <Drawer open={open} anchor={"left"} onClose={() => setOpen(false)}>
         {getList()}
       </Drawer>
       <AppBar position="relative">
