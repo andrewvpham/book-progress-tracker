@@ -11,6 +11,10 @@ import Drawer from '@mui/material/Drawer';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
+import TimelineIcon from '@mui/icons-material/Timeline';
+import SettingsIcon from '@mui/icons-material/Settings';
+
 import { useState } from "react";
 import {
   CheckBoxOutlineBlankOutlined,
@@ -32,9 +36,9 @@ const data = [
     name: "Overview",
     icon: <HomeOutlined />,
   },
-  { name: "Library", icon: <InboxOutlined /> },
-  { name: "View Progress", icon: <CheckBoxOutlineBlankOutlined /> },
-  { name: "Settings", icon: <MailOutline /> },
+  { name: "Library", icon: <LibraryBooksIcon /> },
+  { name: "View Progress", icon: <TimelineIcon /> },
+  { name: "Settings", icon: <SettingsIcon /> },
 
 ];
 
