@@ -27,6 +27,7 @@ import { createTheme } from '@mui/material/styles';
 import { Routes, Route, Link } from "react-router-dom";
 
 
+
 const data = [
   {
     name: "Overview", icon: <HomeOutlined />, linksrc: "/"},
@@ -51,57 +52,37 @@ const theme = createTheme({
 
 function Overview() {
   return (
-    <>
-      <main>
-        <h2>Welcome to the Overview Page</h2>
+      <main style={{ color: "white"}}>
+        <h2 >Welcome to the Overview Page</h2>
         <p>You can do this, I believe in you.</p>
       </main>
-      <nav>
-        <Link to="/about">About</Link>
-      </nav>
-    </>
   );
 }
 
 function Library() {
   return (
-    <>
-      <main>
+      <main style={{ color: "white"}}>
         <h2>Welcome to the Library Page</h2>
         <p>You can do this, I believe in you.</p>
       </main>
-      <nav>
-        <Link to="/about">About</Link>
-      </nav>
-    </>
   );
 }
 
 function Progress() {
   return (
-    <>
-      <main>
+      <main style={{ color: "white"}}>
         <h2>Welcome to the Progress Page</h2>
         <p>You can do this, I believe in you.</p>
       </main>
-      <nav>
-        <Link to="/about">About</Link>
-      </nav>
-    </>
   );
 }
 
 function Settings() {
   return (
-    <>
-      <main>
+      <main style={{ color: "white"}}>
         <h2>Welcome to the Settings Page</h2>
         <p>You can do this, I believe in you.</p>
       </main>
-      <nav>
-        <Link to="/about">About</Link>
-      </nav>
-    </>
   );
 }
 
