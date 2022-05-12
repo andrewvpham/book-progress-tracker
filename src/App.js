@@ -60,7 +60,7 @@ function App() {
     <div style={{ width: 250}} onClick={() => setOpen(false)} >
       {data.map((item, index) => (
         <ListItem button key={index} >
-          <ListItemIcon>{item.icon}</ListItemIcon>
+          <ListItemIcon style={{ color: 'white' }}>{item.icon}</ListItemIcon>
           <ListItemText primary={item.name} />
         </ListItem>
       ))}
