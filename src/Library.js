@@ -7,6 +7,9 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
+import { useState } from "react";
+import IconButton from '@mui/material/IconButton';
+import AddIcon from '@mui/icons-material/Add';
 //this will display dynamically added cards displaying books you read; will have blank card always right-most that says add book to collection
 
 //Theme for card
@@ -21,33 +24,50 @@ const bull = (
 
 //Dyanmically added card
 const Input = () => {
-    return <Grid container spacing={5}>
-    <Grid item sm={4}>
-        <Card sx={{ minWidth: 275 }}>
-            <CardContent>
-                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                Word of the Day
-                </Typography>
-                <Typography variant="h5" component="div">
-                be{bull}nev{bull}o{bull}lent
-                </Typography>
-                <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                adjective
-                </Typography>
-                <Typography variant="body2">
-                well meaning and kindly.
-                <br />
-                {'"a benevolent smile"'}
-                </Typography>
-                </CardContent>
-                <CardActions>
-                    <Button size="small">Learn More</Button>
-                </CardActions>
-        </Card>
-    </Grid>
-
-  </Grid>
-}
+    return <input placeholder="Your input here" />;
+  };
+  
+  const DynamicCard = () => {
+    const [inputList, setInputList] = useState([]);
+  
+    const onAddBtnClick = event => {
+      setInputList(inputList.concat(
+            <Grid item sm={4}>
+                <Card sx={{ minWidth: 275 }}>
+                    <CardContent>
+                        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                        Word of the Day
+                        </Typography>
+                        <Typography variant="h5" component="div">
+                        be{bull}nev{bull}o{bull}lent
+                        </Typography>
+                        <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                        adjective
+                        </Typography>
+                        <Typography variant="body2">
+                        well meaning and kindly.
+                        <br />
+                        {'"a benevolent smile"'}
+                        </Typography>
+                        </CardContent>
+                        <CardActions>
+                            <Button size="small">Learn More</Button>
+                        </CardActions>
+                </Card>
+                <DynamicCard />
+            </Grid>      
+      ));
+    };
+  
+    return (
+      <Grid item sm={4}>
+        <IconButton onClick={onAddBtnClick}>
+            <AddIcon />
+        </IconButton>
+        {inputList}
+      </Grid>
+    );
+  };
 
 function Library() {
     return (
@@ -77,10 +97,9 @@ function Library() {
                             <Button size="small">Learn More</Button>
                         </CardActions>
                 </Card>
+                <DynamicCard />
             </Grid>
-
-          </Grid>
-          
+          </Grid>        
         </Container>
     );
   }
