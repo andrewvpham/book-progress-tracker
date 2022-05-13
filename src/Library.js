@@ -23,9 +23,12 @@ const bull = (
   );
 
 //Dyanmically added card
-const Input = () => {
-    return <input placeholder="Your input here" />;
-  };
+//Contents on each card:
+//Title
+//Genre (dropdown)
+//Year
+//Color selection
+
   
   const DynamicCard = () => {
     const [inputList, setInputList] = useState([]);
@@ -73,7 +76,6 @@ function Library() {
     return (
         <Container style={{ color: "white"}}>
           <h2>Manage your collections in the library</h2>
-          <p>You can do this, I believe in you.</p>
           <Grid container spacing={5}>
             <Grid item sm={4}>
                 <Card sx={{ minWidth: 275 }}>
