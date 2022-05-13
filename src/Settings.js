@@ -1,10 +1,19 @@
+import Switch from '@mui/material/Switch';
+import Container from '@mui/material/Container';
+import Divider from '@mui/material/Divider';
 //Dark mode and light mode
+
+const label = { inputProps: { 'aria-label': 'Switch demo' } };
+
 function Settings() {
     return (
-        <main style={{ color: "white"}}>
-          <h2>Welcome to the Settings Page</h2>
-          <p>You can do this, I believe in you.</p>
-        </main>
+        <Container align="left" style={{ color: "white"}}>
+          <h2>Settings</h2>
+          <Divider sx={{ bgcolor: "white" }}/>
+          <p>Enable or disable dark mode</p>
+          <Switch {...label} defaultChecked />
+      
+        </Container>
     );
   }
 
