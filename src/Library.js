@@ -10,6 +10,7 @@ import Grid from '@mui/material/Grid';
 import { useState } from "react";
 import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
+import Modal from '@mui/material/Modal';
 //this will display dynamically added cards displaying books you read; will have blank card always right-most that says add book to collection
 
 //Theme for card
@@ -26,16 +27,15 @@ const bull = (
 //Contents on each card:
 //Title
 //Genre (dropdown)
-//Year
 //Color selection
 
-  
+ /* 
   const DynamicCard = () => {
     const [inputList, setInputList] = useState([]);
   
     const onAddBtnClick = event => {
       setInputList(inputList.concat(
-            <Grid item sm={4}>
+            <Grid item>
                 <Card sx={{ minWidth: 275 }}>
                     <CardContent>
                         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
@@ -105,5 +105,116 @@ function Library() {
         </Container>
     );
   }
+
+  */
+
+  class Library extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+          open: false,
+          booktitle: '',
+          genre: 'fiction'
+        };
+  
+      // This binding is necessary to make `this` work in the callback
+      this.handleOpen = this.handleOpen.bind(this);
+      this.handleClose = this.handleClose.bind(this);
+      this.handleChange = this.handleChange.bind(this);
+      this.handleChangeGenre = this.handleChangeGenre.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
+    }
+  
+    handleOpen() {
+        this.setState({ open: true });
+      };
+
+      handleClose() {
+        this.setState({ open: false });
+      };
+
+      handleSubmit(event) {
+        alert('Title was submitted: ' + this.state.booktitle + ' and the genre is ' + this.state.genre);
+        event.preventDefault();
+      }
+
+      handleChange(event) {
+        this.setState({booktitle: event.target.value});
+      }
+
+      handleChangeGenre(event) {
+        this.setState({genre: event.target.value});
+      }
+    
+  //Change state with open and onClose
+    render() {
+      return (
+          <div>
+            <IconButton sx={{color: 'white'}} onClick={this.handleOpen}>
+                <AddIcon />
+            </IconButton>
+            <Modal style={{display:'flex',alignItems:'center',justifyContent:'center'}}
+            open={this.state.open}
+            onClose={this.handleClose}  
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+            >
+            <Grid container spacing={5} 
+                direction="column"
+                alignItems="center"
+                justifyContent="center">
+                <Grid item sm={6}>
+                    <Card sx={{ minWidth: 275 }}>
+                    <CardContent>
+                    <p >Add a new book to your library</p>
+                    <form onSubmit={this.handleSubmit}>
+                        <label>
+                        Book title
+                        <input type="text" value={this.state.booktitle} onChange={this.handleChange} />
+                        </label>
+                        <label>
+                        <br></br>
+                        Genre
+                        <select value={this.state.genre} onChange={this.handleChangeGenre}>
+                            <option selected value="fiction">Fiction</option>
+                            <option value="myth">Myth</option>
+                            <option value="romance">Romance</option>
+                            <option value="novel">Novel</option>
+                            <option value="biography">Biography</option>
+                            <option value="fairytale">Fairy-Tale</option>
+                            <option value="drama">Drama</option>
+                            <option value="history">History</option>
+                            <option value="poems">Poems</option>
+                            <option value="nonfiction">Non-fiction</option>
+                        </select>
+                        </label>
+                        <label>
+                        <br></br>
+                        Select color for card
+                        <select>
+                            <option selected value="red">Red</option>
+                            <option value="green">Green</option>
+                            <option value="blue">Blue</option>
+                            <option value="yellow">Yellow</option>
+                        </select>
+                        </label>
+                        <br></br>
+                        <input type="submit" value="Submit" />
+                    </form>
+                        </CardContent>
+
+                </Card>
+          </Grid>      
+                </Grid>
+                
+        </Modal>
+          </div>
+
+        
+        
+      );
+    }
+  }
+  
 
   export default Library;
