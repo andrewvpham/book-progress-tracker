@@ -69,8 +69,8 @@ function Overview() {
             </Grid>
             <Grid align="left" item sm={4} >
             <p>These are your most read genres</p>
-            <PieChart width={250} height={250}>
-            <Pie data={data02} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={80} fill="#82ca9d" label />
+            <PieChart width={280} height={250}>
+            <Pie data={data02} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={80} fill="#82ca9d" label unit="%"/>
             </PieChart>
             </Grid>
             <Grid item sm={12}>
