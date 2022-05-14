@@ -114,7 +114,8 @@ function Library() {
       this.state = {
           open: false,
           booktitle: '',
-          genre: 'fiction'
+          genre: 'fiction',
+          color: 'red'
         };
   
       // This binding is necessary to make `this` work in the callback
@@ -122,6 +123,7 @@ function Library() {
       this.handleClose = this.handleClose.bind(this);
       this.handleChange = this.handleChange.bind(this);
       this.handleChangeGenre = this.handleChangeGenre.bind(this);
+      this.handleChangeColor = this.handleChangeColor.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
     }
   
@@ -134,7 +136,7 @@ function Library() {
       };
 
       handleSubmit(event) {
-        alert('Title was submitted: ' + this.state.booktitle + ' and the genre is ' + this.state.genre);
+        alert('Title was submitted: ' + this.state.booktitle + ' and the genre is ' + this.state.genre + ' and the care color you have chosen is ' + this.state.color);
         event.preventDefault();
       }
 
@@ -144,6 +146,9 @@ function Library() {
 
       handleChangeGenre(event) {
         this.setState({genre: event.target.value});
+      }
+      handleChangeColor(event) {
+        this.setState({color: event.target.value});
       }
     
   //Change state with open and onClose
@@ -191,7 +196,7 @@ function Library() {
                         <label>
                         <br></br>
                         Select color for card
-                        <select>
+                        <select value={this.state.color} onChange={this.handleChangeColor}>
                             <option selected value="red">Red</option>
                             <option value="green">Green</option>
                             <option value="blue">Blue</option>
